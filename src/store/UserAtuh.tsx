@@ -40,7 +40,6 @@ const UserAtuh = ({children}: UserAuthProps) => {
         navigate('/rooms/new');
       }
     })
-    console.log('Buscou dados');
     
     // Sempre é uma boa pratica remover eventos no retorno
     return () => {

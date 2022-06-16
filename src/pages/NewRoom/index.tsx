@@ -42,7 +42,7 @@ const NewRoom = () => {
         <C.Main>
             <C.MainContainer>
                 <img src={logo} alt='System logo'/>
-                <C.MainTitle>Crie uma nova sala - {user?.name}.</C.MainTitle>
+                <C.MainTitle>Crie uma nova sala.</C.MainTitle>
                 <C.MainForm onSubmit={handleCreateRoom}>
                     <Input placeholder='Nome da sala' value={nameRoom} onChange={e => setNameRoom(e.target.value)}/>
                     <Button text='Criar sala' />

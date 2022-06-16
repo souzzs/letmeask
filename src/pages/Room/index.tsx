@@ -1,10 +1,15 @@
 import React from 'react'
+import { Link, useParams } from 'react-router-dom';
+import { UserAuthContext } from '../../store/UserAtuh';
+
 import * as C from "./styles";
 import logo from '../../assets/logo.svg';
-import Button from '../../components/Form/Button';
-import { Link, useParams } from 'react-router-dom';
 import CopyCode from '../../components/CopyCode';
-import { UserAuthContext } from '../../store/UserAtuh';
+import Question from './Question';
+import EmptyQuestions from './EmptyQuestions';
+import FormQuestion from './FormQuestion';
+import useRoom from '../../hooks/useRoom';
+
 
 type RoomParams = {
   id: string
@@ -12,8 +17,10 @@ type RoomParams = {
 
 const Room = () => {
   const params = useParams<RoomParams>();
-  const {user, signInWithGoogle} = React.useContext(UserAuthContext);
-  
+  const {user} = React.useContext(UserAuthContext);
+  const [question, setQuestion] = React.useState('');
+  const {questions, titleRoom} = useRoom(params.id!, user?.id!);
+
   return (
     <C.Room>
       <C.Header>
@@ -27,16 +34,15 @@ const Room = () => {
       <main>
         <C.MainContainer>
           <C.InformationRoom>
-            <C.NameRoom>Sala de react</C.NameRoom>
-            <C.AmountQuestion>4 perguntas</C.AmountQuestion>
+            <C.NameRoom>Sala {titleRoom}</C.NameRoom>
+            {questions.length !== 0 ? <C.AmountQuestion>{questions.length} pergunta(s)</C.AmountQuestion> : undefined}
           </C.InformationRoom>
-          <form>
-            <C.TextArea placeholder='O que você quer perguntar?'/>
-            <C.FormFooter>
-              {user ? undefined : <C.FormFoterP>Para enviar uma pergunta, <C.SpanContrast onClick={signInWithGoogle}>faça seu login</C.SpanContrast></C.FormFoterP>}
-              <Button text='Enviar pergunta' disabled={user ? true : false}/>
-            </C.FormFooter>
-          </form>
+          <FormQuestion id={params.id} question={question} setQuestion={setQuestion}/>
+          <C.ContainerQuestions>
+            {questions.length ? (
+              questions.map(({content, author, likeCount, id}) => <Question key={id} content={content} author={author} likeCount={likeCount}/>)
+            ) : ( <EmptyQuestions /> )}
+          </C.ContainerQuestions>
         </C.MainContainer>
       </main>
     </C.Room>

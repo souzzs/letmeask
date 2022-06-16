@@ -25,6 +25,7 @@ export const Logo = styled.img`
 export const MainContainer = styled.div`
     max-width: 800px;
     margin: 0 auto;
+    padding-bottom: 2rem;
 `;
 
 export const InformationRoom = styled.div`
@@ -50,41 +51,7 @@ export const AmountQuestion = styled.span`
     border-radius: 25px;
 `;
 
-export const TextArea = styled.textarea`
-    width: 100%;
-    min-height: 130px;
-    max-height: 200px;
-    resize: vertical;
-    padding: .625rem 1rem;
-    font-size: 1rem;
-    font-family: 'Roboto';
-    line-height: 1.5;
-    border-radius: .5rem;
-    border: 0;
-    background-color: #fefefe;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-    outline: none;
-
-    &:hover,
-    &:focus{
-        box-shadow: 0 0 0 1px #835AFD;
-    }
+export const ContainerQuestions = styled.div`
+    margin-top: 2rem;
 `;
 
-export const FormFooter = styled.footer`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1rem;
-`;
-
-export const FormFoterP = styled.p`
-    font-weight: 500;
-    font-size: .875rem;
-    color: #737380;
-`;
-
-export const SpanContrast = styled.span`
-    color: #835AFD;
-    cursor: pointer;
-`;

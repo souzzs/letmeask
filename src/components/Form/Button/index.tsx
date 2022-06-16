@@ -9,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({icon, iconAlt, text, ...rest}: ButtonProps) => {
   return (
-    <C.Button>
+    <C.Button {...rest}>
         {icon ? <img src={icon} alt={iconAlt}/> : undefined}
         {text}
     </C.Button>
