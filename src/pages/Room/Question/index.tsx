@@ -1,5 +1,9 @@
 import * as C from "./styles";
-import like from '../../../assets/like.svg';
+import { ReactComponent as Like } from '../../../assets/like.svg';
+import { database } from "../../../services/firebase";
+import React from "react";
+import { UserAuthContext } from "../../../store/UserAtuh";
+
 
 type QuestionProps = {
     content: string;
@@ -8,9 +12,37 @@ type QuestionProps = {
         name: string
     };
     likeCount: number;
+    likeId: string | undefined;
+    roomId: string | undefined;
+    questionId: string;
 }
 
-const Question = ({author, content, likeCount}: QuestionProps) => {
+type ButtonLikedProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    liked: string | undefined;
+}
+
+const Question = ({author, content, likeCount, likeId, roomId, questionId}: QuestionProps) => {
+  const {user} = React.useContext(UserAuthContext);
+
+  const handleSendLike = async () => {
+    if (likeId) {
+        await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove()
+      } else {
+        await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
+          authorId: user?.id,
+        })
+    }
+  }
+
+//   const ButtonLike: React.FC<ButtonLikedProps> = ({liked}) => {
+//     return (
+//         <C.QuestionsLike onClick={handleSendLike} liked={likeId}>
+//             {likeCount > 0 && <p>{likeCount}</p>}
+//             <Like />
+//         </C.QuestionsLike>
+//     )
+//   }
+
   return (
     <C.Question>
         <C.QuestionText>{content}</C.QuestionText>
@@ -19,9 +51,9 @@ const Question = ({author, content, likeCount}: QuestionProps) => {
                     <C.QuestionAuthorImage src={author.avatar} alt={author.name}/>
                     <p>{author.name}</p>
                 </C.QuestionAuthor>
-                <C.QuestionsLike>
-                    <p>{likeCount}</p>
-                    <C.QuestionLikeImage src={like} alt='Ícone de um joinha com o dedão'/>
+                <C.QuestionsLike onClick={handleSendLike} liked={likeId}>
+                    {likeCount > 0 && <p>{likeCount}</p>}
+                    <Like />
                 </C.QuestionsLike>
         </C.QuestionInfo>
     </C.Question>

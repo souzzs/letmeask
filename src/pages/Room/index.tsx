@@ -40,7 +40,7 @@ const Room = () => {
           <FormQuestion id={params.id} question={question} setQuestion={setQuestion}/>
           <C.ContainerQuestions>
             {questions.length ? (
-              questions.map(({content, author, likeCount, id}) => <Question key={id} content={content} author={author} likeCount={likeCount}/>)
+              questions.map(({content, author, likeCount, id, likeId}) => <Question key={id} content={content} author={author} likeCount={likeCount} likeId={likeId} roomId={params.id} questionId={id}/>)
             ) : ( <EmptyQuestions /> )}
           </C.ContainerQuestions>
         </C.MainContainer>

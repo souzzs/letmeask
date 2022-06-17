@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+type PropsButtonLiked = {
+    liked: string | undefined;
+}
+
 export const Question = styled.div`
     padding: 1.5rem;
     border-radius: .5rem;
@@ -38,16 +42,26 @@ export const QuestionAuthorImage = styled.img`
     border-radius: 50%;
 `;
 
-export const QuestionsLike = styled.div`
+export const QuestionsLike = styled.button<PropsButtonLiked>`
     display: flex;
     gap: .5rem;
-    align-items: center;
+    align-items: flex-end;
 
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
-    color: #737380;
-`;
+    color: ${p => p.liked ? '#835afd' : '#737380'};
 
-export const QuestionLikeImage = styled.img`
+    border: 0;
+    background-color: transparent;
+
     cursor: pointer;
+    transition: filter .2s;
+
+    &:hover{
+        filter: brightness(.7);
+    }
+
+    & svg path {
+      stroke: ${p => p.liked ? '#835afd' : '#737380'};
+    }
 `;
