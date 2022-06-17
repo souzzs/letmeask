@@ -1,21 +1,23 @@
+import React, { FormEvent } from 'react';
+import { useNavigate } from "react-router-dom";
+import { database } from '../../services/firebase';
+import { useAuth } from '../../hooks/useAuth';
+
+import Input from '../../components/Form/Input';
+import Button from '../../components/Form/Button';
 import AsideIntroduction from '../../components/AsideIntroduction';
 
 import logo from '../../assets/logo.svg';
 import googleIcon from '../../assets/google-icon.svg';
-import Input from '../../components/Form/Input';
-import Button from '../../components/Form/Button';
 import loginIconButton from '../../assets/login.svg';
 
-import { useNavigate } from "react-router-dom";
 import * as C from "./styles";
-import { UserAuthContext } from '../../store/UserAtuh';
-import React, { FormEvent } from 'react';
-import { database } from '../../services/firebase';
 
 const Home = () => {
   const navigate = useNavigate();
-  const {user, signInWithGoogle} = React.useContext(UserAuthContext);
+  const {user, signInWithGoogle} = useAuth();
   const [roomCode, setRoomCode] = React.useState('');
+
   const handleCreateRoom = async () => {
     if(!user){
         await signInWithGoogle();
@@ -37,6 +39,13 @@ const Home = () => {
       return;
     }
 
+    if (roomRef.val().endedAt) {
+      alert('Sala encerrada.');
+      setRoomCode('');
+      return;
+    }
+
+    setRoomCode('');
     navigate(`/rooms/${roomCode}`);
   }
 
@@ -46,15 +55,25 @@ const Home = () => {
         <C.Main>
             <C.MainContainer>
                 <img src={logo} alt='System logo'/>
-                <C.ButtonGoogle onClick={handleCreateRoom}>
-                    <img src={googleIcon} alt='Logo google'/>
-                    Crie sua sala com o google
-                </C.ButtonGoogle> 
-                <C.Separator>ou entre em uma sala</C.Separator>
+                {!user && (
+                  <>
+                    <C.ButtonGoogle onClick={handleCreateRoom}>
+                      <img src={googleIcon} alt='Logo google'/>
+                      Crie sua sala com o google
+                    </C.ButtonGoogle> 
+                    <C.Separator>ou entre em uma sala</C.Separator>
+                  </>
+                )}
                 <C.MainForm onSubmit={handleJoinRoom}>
                     <Input placeholder='Digite o código da sala' value={roomCode} onChange={e => setRoomCode(e.target.value)}/>
                     <Button icon={loginIconButton} iconAlt="Indica a entrada no site" text='Entrar na sala' />
                 </C.MainForm>
+                {user && (
+                  <>
+                    <C.Separator>ou crie sua própria sala</C.Separator>
+                    <Button text='Criar salar' onClick={() => navigate('/rooms/new')}/>
+                  </>
+                )}
             </C.MainContainer>
         </C.Main>
     </C.Home>

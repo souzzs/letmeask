@@ -30,6 +30,18 @@ type FirebaseQuestions = Record<string, {
 const useRoom = (roomId: string, userId: string) => {
   const [questions, setQuestions] = React.useState<QuestionType[]>([]);
   const [titleRoom, setTitleRoom] = React.useState('');
+  const [typeUser, setTypeUser] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    const roomRef = database.ref(`rooms/${roomId}`);
+
+    roomRef.once('value', room => {
+      const databaseRoom = room.val();
+      
+      const userType = databaseRoom.authorId === userId ? 'adm' : 'user';
+      setTypeUser(userType);
+    });
+  }, [roomId, userId]);
 
   React.useEffect(() => {
     const roomRef = database.ref(`rooms/${roomId}`);
@@ -57,7 +69,7 @@ const useRoom = (roomId: string, userId: string) => {
 
   }, [roomId, userId]);
 
-  return {titleRoom, questions}
+  return {titleRoom, questions, typeUser}
 }
 
 export default useRoom

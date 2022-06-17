@@ -1,12 +1,11 @@
-import React from 'react'
 import iconButton from '../../assets/copy.svg';
 import * as C from "./styles";
 
-type CopyCodeProps = {
+type PropsCopyCode = {
     code: string;
 }
 
-const CopyCode = ({code}: CopyCodeProps) => {
+const CopyCode = ({code}: PropsCopyCode) => {
     const copyCode = () => {
         navigator.clipboard.writeText(code);
     }

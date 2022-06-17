@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-type PropsButtonLiked = {
-    liked: string | undefined;
-}
-
 export const Room = styled.section`
 
 `;
@@ -19,6 +15,12 @@ export const HeaderContainer = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+`;
+
+export const ContainerButtonsHeader = styled.div`
+    display: flex;
+    gap: .5rem;
     align-items: center;
 `;
 
@@ -59,22 +61,20 @@ export const ContainerQuestions = styled.div`
     margin-top: 2rem;
 `;
 
-export const QuestionsLike = styled.button<PropsButtonLiked>`
+export const ContainerButtonsAction = styled.div`
     display: flex;
-    gap: .5rem;
-    align-items: flex-end;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    color: ${p => p.liked ? '#835afd' : '#737380'};
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+`;
 
+export const ButtonAction = styled.button`
     border: 0;
     background-color: transparent;
     cursor: pointer;
-    transition: filter .2s;
-    &:hover{
-        filter: brightness(.7);
-    }
-    & svg path {
-        stroke: ${p => p.liked ? '#835afd' : '#737380'};
+    transition: stroke .2s;
+
+    &:hover svg path{
+        stroke: #835AFD;
     }
 `;

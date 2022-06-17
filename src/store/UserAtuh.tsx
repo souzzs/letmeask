@@ -36,8 +36,10 @@ const UserAtuh = ({children}: UserAuthProps) => {
           id: uid,
           name: displayName,
           avatar: photoURL
-        })
-        navigate('/rooms/new');
+        });
+
+        const {pathname} = window.location;
+        if(pathname === '/') navigate('/rooms/new');
       }
     })
     

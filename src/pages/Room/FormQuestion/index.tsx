@@ -1,8 +1,9 @@
 import React, { FormEvent } from 'react'
 import { database } from '../../../services/firebase';
-import { UserAuthContext } from '../../../store/UserAtuh';
+import { useAuth } from '../../../hooks/useAuth';
 
 import Button from '../../../components/Form/Button';
+
 import * as C from "./styles";
 
 type FormQuestionProps = {
@@ -12,7 +13,7 @@ type FormQuestionProps = {
 }
 
 const FormQuestion = ({question, setQuestion, id}: FormQuestionProps) => {
-  const {user, signInWithGoogle} = React.useContext(UserAuthContext);
+  const {user, signInWithGoogle} = useAuth();
 
   const handleSendQuestion = async (e: FormEvent) => {
     e.preventDefault();

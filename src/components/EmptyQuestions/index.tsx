@@ -1,6 +1,5 @@
-import React from 'react'
 import * as C from "./styles";
-import emptyQuestions from '../../../assets/empty-questions.svg';
+import emptyQuestions from '../../assets/empty-questions.svg';
 
 const EmptyQuestions = () => {
   return (
