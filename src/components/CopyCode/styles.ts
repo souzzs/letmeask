@@ -22,7 +22,6 @@ export const ContainerImage = styled.div`
 `;
 
 export const TextButton = styled.span`
-    width: 240px;
     font-size: .875rem;
     padding: .75rem;
     font-weight: 500;

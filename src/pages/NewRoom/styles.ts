@@ -5,12 +5,24 @@ export const NewRoom = styled.section`
     height: 100vh;
     display: grid;
     grid-template-columns: 7fr 8fr;
+
+    @media only screen and (max-width: 1020px){
+        display: block;
+    }
 `;
 
 export const Main = styled.main`
     display: grid;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: 1020px){
+        padding: 1.875rem;
+    }
+
+    @media only screen and (max-width: 620px){
+        height: 100vh;
+    }
 `;
 
 export const MainContainer = styled.div`

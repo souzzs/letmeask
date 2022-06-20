@@ -15,6 +15,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ReactComponent as Delete } from '../../assets/delete.svg';
 import { ReactComponent as Check } from '../../assets/check.svg';
 import { ReactComponent as Answer } from '../../assets/answer.svg';
+import useMedia from '../../hooks/useMedia';
 
 type RoomParams = {
   id: string
@@ -25,7 +26,8 @@ const AdminRoom = () => {
   const navigate = useNavigate();
   const {user} = useAuth();
   const {questions, titleRoom, typeUser} = useRoom(params.id!, user?.id!);
-  
+  const matchMedia = useMedia('(max-width: 620px)');
+
   React.useEffect(() => {
     if(typeUser === 'adm'){
       navigate(`/admin/rooms/${params.id}`)
@@ -63,14 +65,14 @@ const AdminRoom = () => {
   return (
     <C.Room>
       <C.Header>
-        <C.HeaderContainer>
+        <C.HeaderContainer matchMedia={matchMedia}>
           <Link to='/'>
             <C.Logo src={logo} alt='Logo do site'/>
-          </Link>
+          </Link> 
           <C.ContainerButtonsHeader>
             <CopyCode code={params.id!} />
             <Button style={{height: '40px'}} onClick={handleCloseRoom} text='Encerrar sala'/>
-          </C.ContainerButtonsHeader>
+          </C.ContainerButtonsHeader> 
         </C.HeaderContainer>
       </C.Header>
       <main>

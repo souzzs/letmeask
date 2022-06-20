@@ -10,6 +10,7 @@ export const EmptyQuestions = styled.div`
     font-size: .875rem;
     font-weight: 400;
     line-height: 1.4;
+    text-align: center;
 `;
 
 export const Title = styled.h3`

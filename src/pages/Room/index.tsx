@@ -13,6 +13,7 @@ import logo from '../../assets/logo.svg';
 import { ReactComponent as Like } from '../../assets/like.svg';
 
 import * as C from "./styles";
+import useMedia from '../../hooks/useMedia';
 
 type RoomParams = {
   id: string
@@ -24,6 +25,7 @@ const Room = () => {
   const {user} = useAuth();
   const [question, setQuestion] = React.useState('');
   const {questions, titleRoom, typeUser} = useRoom(params.id!, user?.id!);
+  const matchMedia = useMedia('(max-width: 620px)');
   
 
   React.useEffect(() => {
@@ -46,11 +48,13 @@ const Room = () => {
   return (
     <C.Room>
       <C.Header>
-        <C.HeaderContainer>
+        <C.HeaderContainer matchMedia={matchMedia}>
           <Link to='/'>
             <C.Logo src={logo} alt='Logo do site'/>
           </Link>
-          <CopyCode code={params.id!} />
+          <C.ContainerButtonsHeader>
+            <CopyCode code={params.id!} />
+          </C.ContainerButtonsHeader> 
         </C.HeaderContainer>
       </C.Header>
       <main>

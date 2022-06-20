@@ -9,16 +9,26 @@ type PropsButtonLiked = {
     liked: string | undefined;
 }
 
-export const Question = styled.div<PropsQuestionDiv>`
+export const Question = styled.div.attrs((p:PropsQuestionDiv) => {
+    if(p.isHighlighted){
+        return {
+            style:{
+                backgroundColor: '#F4F0FF',
+                boxShadow: 'rgba(131, 90, 253, 1) 0px 2px 12px'
+            }
+        }
+    } else if(p.isAnswered){
+        return {
+            style:{
+                backgroundColor: '#eee',
+                boxShadow: 'rgba(87, 239, 138, 0.5) 0px 2px 12px'
+            }
+        }
+    }
+})<PropsQuestionDiv>`
     padding: 1.5rem;
     border-radius: .5rem;
-    border: 1px solid #29292E;
-    margin-bottom: 1rem;
-
-    background-color: ${p => p.isHighlighted ? '#F4F0FF' : ''};
-    border-color: ${p => p.isHighlighted ? '#835AFD' : ''};
-    background-color: ${p => p.isAnswered ? '#DBDCDD' : ''};
-    border-color: ${p => p.isAnswered ? '#54ED63' : ''};
+    margin-bottom: 1.5rem;
 `;
 
 export const QuestionText = styled.p`

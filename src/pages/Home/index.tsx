@@ -2,6 +2,7 @@ import React, { FormEvent } from 'react';
 import { useNavigate } from "react-router-dom";
 import { database } from '../../services/firebase';
 import { useAuth } from '../../hooks/useAuth';
+import useMedia from '../../hooks/useMedia';
 
 import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
@@ -17,6 +18,7 @@ const Home = () => {
   const navigate = useNavigate();
   const {user, signInWithGoogle} = useAuth();
   const [roomCode, setRoomCode] = React.useState('');
+  const matchMedia = useMedia('(max-width: 620px)');
 
   const handleCreateRoom = async () => {
     if(!user){
@@ -51,10 +53,10 @@ const Home = () => {
 
   return (
     <C.Home>
-        <AsideIntroduction />
+        {!matchMedia && <AsideIntroduction />}
         <C.Main>
             <C.MainContainer>
-                <img src={logo} alt='System logo'/>
+                <C.Logo src={logo} alt='System logo'/>
                 {!user && (
                   <>
                     <C.ButtonGoogle onClick={handleCreateRoom}>
@@ -71,7 +73,7 @@ const Home = () => {
                 {user && (
                   <>
                     <C.Separator>ou crie sua própria sala</C.Separator>
-                    <Button text='Criar salar' onClick={() => navigate('/rooms/new')}/>
+                    <Button text='Criar salar' style={{width: '320px'}} onClick={() => navigate('/rooms/new')}/>
                   </>
                 )}
             </C.MainContainer>

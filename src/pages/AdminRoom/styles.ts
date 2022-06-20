@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const Room = styled.section`
+type HeaderContainerProps = {
+    matchMedia: boolean;
+}
 
-`;
+export const Room = styled.section``;
 
 export const Header = styled.header`
     padding: 1.25rem;
@@ -10,10 +12,12 @@ export const Header = styled.header`
     margin-bottom: 4rem;
 `;
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div<HeaderContainerProps>`
     max-width: 1120px;
     margin: 0 auto;
     display: flex;
+    flex-direction: ${p => p.matchMedia ? 'column' : 'row'};
+    gap:  ${p => p.matchMedia ? '1rem' : '0'};
     justify-content: space-between;
     align-items: center;
 `;
@@ -22,6 +26,8 @@ export const ContainerButtonsHeader = styled.div`
     display: flex;
     gap: .5rem;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 `;
 
 export const Logo = styled.img`
@@ -32,6 +38,8 @@ export const MainContainer = styled.div`
     max-width: 800px;
     margin: 0 auto;
     padding-bottom: 2rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
 `;
 
 export const InformationRoom = styled.div`

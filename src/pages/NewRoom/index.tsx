@@ -10,11 +10,13 @@ import Input from '../../components/Form/Input';
 import logo from '../../assets/logo.svg';
 
 import * as C from "./styles";
+import useMedia from '../../hooks/useMedia';
 
 const NewRoom = () => {
   const {user} = useAuth();
   const [nameRoom, setNameRoom] = React.useState('');
   const navigate = useNavigate();
+  const matchMedia = useMedia('(max-width: 620px)');
 
   React.useEffect(() => {
     if(!user){
@@ -39,7 +41,7 @@ const NewRoom = () => {
 
   return (
     <C.NewRoom>
-        <AsideIntroduction />
+        {!matchMedia && <AsideIntroduction />}
         <C.Main>
             <C.MainContainer>
                 <img src={logo} alt='System logo'/>

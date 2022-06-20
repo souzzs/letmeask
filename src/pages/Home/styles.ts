@@ -4,12 +4,24 @@ export const Home = styled.section`
     height: 100vh;
     display: grid;
     grid-template-columns: 7fr 8fr;
+
+    @media only screen and (max-width: 1020px){
+        display: block;
+    }
 `;
 
 export const Main = styled.main`
     display: grid;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: 1020px){
+        padding: 1.875rem;
+    }
+
+    @media only screen and (max-width: 620px){
+        height: 100vh;
+    }
 `;
 
 export const MainContainer = styled.div`
@@ -18,12 +30,15 @@ export const MainContainer = styled.div`
     align-items: center;
 `;
 
+export const Logo = styled.img`
+    margin-bottom: 3.5rem;
+`;
+
 export const ButtonGoogle = styled.button`
     width: 320px;
     height: 50px;
     background-color: #EA4335;
 
-    margin-top: 3.5rem;
     border: none;
     border-radius: .5rem;
 
@@ -79,4 +94,3 @@ export const MainForm = styled.form`
     gap: 1rem;
     flex-direction: column;
 `;
-
