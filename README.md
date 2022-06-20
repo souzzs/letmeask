@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+<p align="center"><img src="https://github.com/rocketseat-education/nlw-06-reactjs/blob/master/.github/cover.svg"></p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+ <a href="#sobre">Sobre</a> •
+ <a href="#aprendizados">Aprendizados</a> •
+ <a href="#tecnologias">Tecnologias</a> •
+ <a href="#instalacao">Instalação</a> 
+</p>
 
-## Available Scripts
+<div id="sobre">
+  <h1>📎 Sobre. </h1>
+  <p>Letmeask é um sistema para criadores de conteúdos interagir com seu público, criando salas de perguntas e respostas. Ele foi desenvolvido na 6º edição do nlw, evento proposto pela <a href="https://www.rocketseat.com.br/">Rocketseat</a>. Na trilha de react, na qual o sistema foi desenvolvido, foram abordados conceitos de react com a utilização do typescript e conceito do firebase, tecnologia usada como back-end. Além disso, a biblioteca styled components foi usada como um diferencial pessoal.</p>
+</div>
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<div id="aprendizados">
+ <h1>📚 Aprendizados. </h1>
+ <ul>
+  <li>Boas práticas de código, layout e organização.</li>
+  <li>Responsividade com styled components.</li>
+  <li>Tipagem próprias do react e personalizadas no typescript.</li>
+  <li>Conceitos básicos de firebase.</li>
+ </ul>
+<div>
+  
+  
+  <div id="tecnologias">
+  <h1>🛠 Tecnologias.</h1>
+  <p>
+    <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&amp;logo=react&amp;logoColor=%2361DAFB" alt="React">
+    <img alt="TYPESCRIPT" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">
+    <img alt="STYLED COMPONENTS" src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
+    <img src="https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&amp;logo=Firebase&amp;logoColor=white" alt="Firebase">
+   </p>
+</div>
+  
+<div id="instalacao">
+   <h1>ℹ️ Instalação.</h1>
+  <ul>
+    <li>
+      <p>Clone o projeto e acesse a pasta do mesmo.</p>
+      <code>
+          $ git clone https://github.com/souzzs/letmeask.git
+      </code>
+    </li>
+    <li>
+      <p>Instale as dependências</p>
+      <code>
+          $ npm install
+      </code>
+    </li>
+    <li>
+      <p>Inicie o projeto</p>
+      <code>
+          $ npm start
+      </code>
+    </li>
+  </ul>
+</div>
+  
+<div id="autor">
+  <h1>✏️ Autor.</h1>
+  <p>Desenvolvimento por <a href="https://github.com/souzzs">Caio Souza</a>. & Ideia por <a href="https://www.rocketseat.com.br/">Rocketseat</a>.</p>
+  <p>
+    <a href="https://instagram.com/seu-usuario/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&amp;logo=instagram&amp;logoColor=white" alt="Instagram Badge"></a>
+    <a href="https://discord.gg/seu-server"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&amp;logo=discord&amp;logoColor=white" alt="Discord Badge"></a>
+    <a href="https://www.linkedin.com/in/seu-usuario/"><img src="https://img.shields.io/badge/  LinkedIn-0077B5?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="Linkedin"></a>
+  </p>
+</div>
